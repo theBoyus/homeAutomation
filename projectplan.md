@@ -12,8 +12,7 @@ We'll cooperate to make it work together, so that if someone becomes sick anothe
 Or we contact Samuel Berg or Emil Ulvegården. 😊❤️
 
 ## Description and background of idea
-we came out with the idea thinking of an easier way to control home appliences, like switch lights and maybe fans, etc..
-the idea is to have an app/website to control the appliences with, while adding sensors to them so they can be automatically operated, and a time could be added so they turn on or off on a scheduel.
+we came out with the idea thinking of a more convenient way to control home appliances, such as lights, fans, etc. The concept involves creating an app or website for manual control, along with adding sensors for automatic operation. Additionally, a feature for scheduling when these appliances turn on or off can be integrated
 
 
 ## Bill of Material (utrustningslista)
