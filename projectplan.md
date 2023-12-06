@@ -19,6 +19,13 @@ we came out with the idea thinking of a more convenient way to control home appl
 Optoional sensors:
 Motion, light.
 
+#
+Ljussensor
+
+Digital ljussensor monterad på kort
+
+Fotomotstånd CdS 4-7 kohm
+#
 
 ## General requirements (kravspecifikation, övergripande)
 Webserver, website (github or other service?), picom and other hardware.
