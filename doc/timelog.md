@@ -10,3 +10,4 @@ First meeting with Tomas, we all agreed to doing a lightsensor thingy with the p
 ### 16:00
 We decided on what sensors to get. They have been ordered. At the same time Samuel is setting up the react website.
 
+Website structure done-ish.

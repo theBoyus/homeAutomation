@@ -1,4 +1,4 @@
-## Meeting 1
+# Meeting 1
 
 If we want A grade, we need at least 1 sensor it seems.
 
@@ -18,4 +18,8 @@ We're unsure of whether to go for a motionsensor to turn on/off lights. Or light
 Lightsensors are cheaper 👌
 
 Lightsensors it is!
-#
+##
+
+Website structure is functional, and sensors have been ordered.
+
+# Meeting 2
