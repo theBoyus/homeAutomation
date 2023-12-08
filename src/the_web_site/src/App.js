@@ -1,8 +1,11 @@
 import './App.css';
+import Start_page from "./pages/Start_page.jsx"
 
 function App() {
   return (
-    <h1>you have consumed a lot!!!!!</h1>
+    <>
+      <Start_page/>
+        </>
   )
 }
 
