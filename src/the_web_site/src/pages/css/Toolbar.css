@@ -1,0 +1,45 @@
+.toolbar {
+    height: 50px;
+    position: fixed; /* Fix the position relative to the viewport */
+    top: 0;          /* Align the top edge of the toolbar with the top of the viewport */
+    left: 0;         /* Align the left edge of the toolbar with the left of the viewport */
+    width: 100%;     /* Make the toolbar span the full width of the viewport */
+    background-color: rgb(122, 118, 118);
+    padding: 10px 0; /* Add some padding on the top and bottom */
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1); /* Optional: add a shadow for better visibility */
+    z-index: 1000;   /* Ensure the toolbar stays on top of other elements */
+}
+
+.toolbar button {
+    margin: 0 10px;  /* Space out the buttons */
+}
+
+.button-16 {
+  background-color: #f8f9fa;
+  border: 1px solid #f8f9fa;
+  border-radius: 4px;
+  color: #3c4043;
+  cursor: pointer;
+  font-family: arial,sans-serif;
+  font-size: 14px;
+  height: 36px;
+  line-height: 27px;
+  min-width: 54px;
+  padding: 0 16px;
+  text-align: center;
+  user-select: none;
+  -webkit-user-select: none;
+  touch-action: manipulation;
+  white-space: pre;
+}
+
+.button-16:hover {
+  border-color: #dadce0;
+  box-shadow: rgba(0, 0, 0, .1) 0 1px 1px;
+  color: #202124;
+}
+
+.button-16:focus {
+  border-color: #4285f4;
+  outline: none;
+}
