@@ -4,7 +4,7 @@ sync_to_github:
     - git config --global user.email "samwill3003@gmail.com"
     - git config --global user.name "theBoyus"
   script:
-    - git remote add github https://theBoyus:${GITHUB_TOKEN}@github.com/theBoyus/homeAutomation.git
+    - git remote add github https://theBoyus:${githubToken}@github.com/theBoyus/homeAutomation.git
     - git fetch --unshallow || true 
     - git push --quiet --set-upstream github HEAD:main 
   only:
