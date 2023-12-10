@@ -4,4 +4,4 @@ sync_to_github:
     - git remote add github https://github.com/Samuel-azzawi/homeAutomation.git
     - git push github HEAD:main
   only:
-    - main  # or your default branch
+    - main
