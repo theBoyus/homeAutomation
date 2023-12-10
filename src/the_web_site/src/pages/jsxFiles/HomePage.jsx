@@ -17,11 +17,20 @@ function HomePage() {
     setStarthour(event.target.value);
   };
 
+  const contentMap = {
+    option1: "Content for Option 1",
+    option2: "Content for Option 2",
+    option3: "Content for Option 3",
+    option4: "Content for Option 4",
+  };
+
   const handleendHourChange = (event) => {
     setEndhour(event.target.value);
   };
 
   const hours = Array.from({ length: 24 }, (_, index) => index); // generate array from 0 to 23
+
+  const content = contentMap[selectedOption] || "Select an option";
 
   return (
     /*
@@ -42,7 +51,7 @@ function HomePage() {
         </select>
         </div>
         */
-    <div>
+    <div className="container">
       <div className="options-container">
         {options.map((option) => (
           <label key={option} className="option-label">
@@ -53,13 +62,11 @@ function HomePage() {
               onChange={() => handleOptionChange(option)}
             />
             {option.charAt(0).toUpperCase() + option.slice(1)}{" "}
-            {/* Capitalize the first letter */}
           </label>
         ))}
       </div>
 
       <div className="right-box">
-        <h2>Right Box Content</h2>
         <p>{content}</p>
       </div>
     </div>
