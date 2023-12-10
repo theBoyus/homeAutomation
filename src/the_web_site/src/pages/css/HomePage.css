@@ -1,0 +1,21 @@
+.start {
+    margin: 5px;
+}
+
+.end {
+    margin: 5px;
+}
+
+.options-container {
+    display: flex;
+    flex-direction: column;
+    border: 1px solid #ccc; /* Optional: Add a border */
+    border-radius: 10px; /* Adjust the border-radius for rounded corners */
+    padding: 10px; /* Optional: Add padding for spacing inside the box */
+    margin-bottom: 10px; /* Optional: Add margin for spacing outside the box */
+    width: 100px;
+  }
+  
+  .option-label {
+    margin-bottom: 5px; /* Optional: Add some spacing between labels */
+  }
