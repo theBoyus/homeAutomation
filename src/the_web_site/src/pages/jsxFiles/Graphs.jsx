@@ -12,7 +12,7 @@ function Graphs() {
 
   return (
     <div>
-      <>selfies with the boys</>
+      <>selfies with the boys!</>
       <div>
         {images.map((image, index) => (
           <button key={index} onClick={() => setCurrentImage(image)}>
