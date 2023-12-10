@@ -28,6 +28,6 @@ Made the website work for everyone locally. We also decided on the structure the
 
 # 10/12-23
 
-### 15:00
+### 15:00 -> 18:00
 
 Meeting to work on the website.
