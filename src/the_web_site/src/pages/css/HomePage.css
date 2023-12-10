@@ -1,34 +1,58 @@
-.start {
-  margin: 5px;
-}
-
-.end {
-  margin: 5px;
-}
+/* HomePage.css */
 
 .container {
   display: flex;
+  justify-content: space-between;
+  padding: 20px;
 }
 
 .options-container {
   display: flex;
   flex-direction: column;
-  border: 1px solid #ccc; /* Optional: Add a border */
-  border-radius: 10px; /* Adjust the border-radius for rounded corners */
-  padding: 10px; /* Optional: Add padding for spacing inside the box */
-  margin-bottom: 10px; /* Optional: Add margin for spacing outside the box */
-  width: 100px;
+  border: 1px solid #dadce0; /* Match toolbar border color */
+  border-radius: 4px; /* Match toolbar border-radius */
+  padding: 10px;
+  width: 150px;
 }
 
 .option-label {
-  margin-bottom: 5px; /* Optional: Add some spacing between labels */
+  margin-bottom: 8px;
 }
 
 .right-box {
-  margin-left: 20px; /* Optional: Add margin to create space between the two boxes */
-  flex-grow: 1; /* Allow the right-box to grow and take available space */
-  border: 1px solid #ccc; /* Optional: Add a border */
-  border-radius: 10px; /* Adjust the border-radius for rounded corners */
-  padding: 10px; /* Optional: Add padding for spacing inside the box */
-  width: 100px;
+  flex-grow: 1;
+  margin-left: 20px;
+  border: 1px solid #dadce0; /* Match toolbar border color */
+  border-radius: 4px; /* Match toolbar border-radius */
+  padding: 20px;
+}
+
+button {
+  background-color: #4caf50; /* Match toolbar background color */
+  border: none;
+  border-radius: 4px;
+  color: #ffffff; /* Match toolbar text color */
+  cursor: pointer;
+  font-family: "Arial", sans-serif;
+  font-size: 14px;
+  height: 36px;
+  line-height: 36px; /* Adjusted to vertically align with the toolbar height */
+  min-width: 54px;
+  padding: 0 16px;
+  text-align: center;
+  user-select: none;
+  transition: background-color 0.3s, color 0.3s;
+}
+
+button:hover {
+  background-color: #45a049; /* Slightly darker green on hover */
+}
+
+button:focus {
+  outline: none;
+}
+
+.button-16 {
+  background-color: #2196f3; /* Blue color, you can customize */
+  color: #ffffff; /* White color, you can customize */
 }
