@@ -1,3 +1,5 @@
+// HomePage.js
+
 import { useState } from "react";
 import "../css/HomePage.css";
 
@@ -90,7 +92,7 @@ function HomePage() {
   const content = contentMap[selectedOption] || "Select an option";
 
   return (
-    <div className="container">
+    <div className="homepage-container">
       {/* Options Box */}
       <div className="options-container">
         {options.map((option) => (
