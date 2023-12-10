@@ -1,6 +1,6 @@
 /* HomePage.css */
 
-.container {
+.homepage-container {
   display: flex;
   justify-content: space-between;
   padding: 20px;
@@ -9,20 +9,28 @@
 .options-container {
   display: flex;
   flex-direction: column;
-  border: 1px solid #dadce0; /* Match toolbar border color */
-  border-radius: 4px; /* Match toolbar border-radius */
-  padding: 10px;
+  border: 1px solid #dadce0;
+  border-radius: 8px;
+  padding: 15px;
   width: 150px;
+  background-color: #f8f9fa;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
 }
 
 .option-label {
-  margin-bottom: 8px;
+  margin: 8px 0;
 }
 
 .right-box {
   flex-grow: 1;
   margin-left: 20px;
-  border: 1px solid #dadce0; /* Match toolbar border color */
-  border-radius: 4px; /* Match toolbar border-radius */
+  border: 1px solid #dadce0;
+  border-radius: 8px;
   padding: 20px;
+  background-color: #f8f9fa;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+}
+
+.homepage-button {
+  margin: 4 4 4 4;
 }

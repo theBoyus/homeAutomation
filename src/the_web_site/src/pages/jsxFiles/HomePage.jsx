@@ -34,16 +34,26 @@ function HomePage() {
   const contentMap = {
     option1: (
       <div>
-        <button onClick={() => handleButtonClick("On")}>On</button>
-        <button onClick={() => handleButtonClick("Off")}>Off</button>
-        <p>Toggle the device on or off.</p>
+        <button
+          onClick={() => handleButtonClick("On")}
+          className="homepage-button"
+        >
+          On
+        </button>
+        <button
+          onClick={() => handleButtonClick("Off")}
+          className="homepage-button"
+        >
+          Off
+        </button>
+        <p>Turns the LED On or OFF</p>
       </div>
     ),
     option2: (
       <div>
         <label>Start Time:</label>
         <select
-          className="start"
+          className="homepage-button start"
           value={starthour}
           onChange={handlestartHourChange}
         >
@@ -55,7 +65,11 @@ function HomePage() {
         </select>
         <br />
         <label>End Time:</label>
-        <select className="end" value={endhour} onChange={handleendHourChange}>
+        <select
+          className="homepage-button end"
+          value={endhour}
+          onChange={handleendHourChange}
+        >
           {generateHours().map((h) => (
             <option key={h} value={h}>
               {h < 10 ? `0${h}:00` : `${h}:00`}
@@ -72,16 +86,27 @@ function HomePage() {
           alt="Blank 100px by 100px image"
           style={{ width: "100px", height: "100px" }}
         />
-        <button onClick={() => handleButtonClick("Option3")}>Click me</button>
+        <button
+          onClick={() => handleButtonClick("Option3")}
+          className="homepage-button"
+        >
+          Click me
+        </button>
         <p>Display an image and a button.</p>
       </div>
     ),
     option4: (
       <div>
-        <button onClick={() => handleButtonClick("Shut it down")}>
+        <button
+          onClick={() => handleButtonClick("Shut it down")}
+          className="homepage-button"
+        >
           Shut it down
         </button>
-        <button onClick={() => handleButtonClick("Boot it up")}>
+        <button
+          onClick={() => handleButtonClick("Boot it up")}
+          className="homepage-button"
+        >
           Boot it up
         </button>
         <p>Control the device power.</p>
