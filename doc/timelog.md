@@ -31,3 +31,9 @@ Made the website work for everyone locally. We also decided on the structure the
 ### 15:00 -> 18:00
 
 Meeting to work on the website.
+
+# 11/12-23
+
+### 18:00 -> 20:00
+
+Made the about page structure and design
