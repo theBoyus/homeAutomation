@@ -10,7 +10,8 @@ function About() {
           <h3>Who are we</h3>
         </div>
         <div className="txtContainer1">
-          <p>Some text goes here.</p>
+          <p> Lorem ipsum dolor sit amet, consectetur adipiscing elit. Mauris eleifend sed nisl non dapibus. Praesent finibus eros at libero commodo, eu malesuada erat malesuada. Nulla pulvinar ligula eget neque posuere, in tempor dui pharetra. Nam ut tincidunt felis. Aliquam et ipsum mollis, vulputate libero non, pellentesque nisl. Etiam iaculis scelerisque lectus, et feugiat enim dictum vel. Vestibulum posuere consequat viverra. Phasellus ut sem tempor, feugiat nunc imperdiet, bibendum leo. Curabitur fringilla magna non mi convallis euismod. In hac habitasse platea dictumst. Integer quis tempor purus, a vulputate lacus.
+</p>
         </div>
       </div>
       <div>
