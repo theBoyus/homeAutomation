@@ -109,12 +109,12 @@ function HomePage() {
         >
           Boot it up
         </button>
-        <p>Control the device power.</p>
+        <p>Control the device state.</p>
       </div>
     ),
   };
 
-  const content = contentMap[selectedOption] || "Select an option";
+  const content = contentMap[selectedOption] || "Select one of the options to be shown more.";
 
   return (
     <div className="homepage-container">
