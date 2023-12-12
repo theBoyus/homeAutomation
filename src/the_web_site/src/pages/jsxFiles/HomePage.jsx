@@ -92,7 +92,7 @@ function HomePage() {
         >
           Click me
         </button>
-        <p>Display an image and a button.</p>
+        <p>Here we'll have 1 dropdown (Select light sensitivity) and 2 buttons to toggle mode and maybe an image of light data history?</p>
       </div>
     ),
     "System control": (
