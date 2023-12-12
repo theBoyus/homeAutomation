@@ -32,7 +32,7 @@ function HomePage() {
   };
 
   const contentMap = {
-    option1: (
+    "Manual Switch": (
       <div>
         <button
           onClick={() => handleButtonClick("On")}
@@ -49,7 +49,7 @@ function HomePage() {
         <p>Turns the LED On or OFF</p>
       </div>
     ),
-    option2: (
+    "Schedule": (
       <div>
         <label>Start Time:</label>
         <select
@@ -79,7 +79,7 @@ function HomePage() {
         <p>Set a timer for the device.</p>
       </div>
     ),
-    option3: (
+    "Light-based": (
       <div>
         <img
           src="https://via.placeholder.com/100"
@@ -95,7 +95,7 @@ function HomePage() {
         <p>Display an image and a button.</p>
       </div>
     ),
-    option4: (
+    "System control": (
       <div>
         <button
           onClick={() => handleButtonClick("Shut it down")}
