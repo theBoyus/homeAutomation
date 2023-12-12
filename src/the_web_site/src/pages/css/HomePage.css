@@ -2,7 +2,8 @@
 
 .homepage-container {
   display: flex;
-  flex-wrap: wrap; /* Allow items to wrap onto the next line */
+  justify-content: space-between;
+  padding: 20px;
 }
 
 .options-container {
@@ -16,6 +17,10 @@
   box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
 }
 
+.option-label {
+  margin: 8px 0;
+}
+
 .right-box {
   flex-grow: 1;
   margin-left: 20px;
@@ -24,20 +29,6 @@
   padding: 20px;
   background-color: #f8f9fa;
   box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
-}
-
-@media (max-width: 768px) {
-  .homepage-container {
-    flex-direction: column; /* Stack items vertically on smaller screens */
-  }
-
-  .right-box {
-    margin-top: 0; /* Reset margin on small screens */
-  }
-}
-
-.option-label {
-  margin: 8px 0;
 }
 
 .homepage-button {

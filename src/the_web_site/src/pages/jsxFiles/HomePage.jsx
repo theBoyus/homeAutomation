@@ -76,18 +76,6 @@ function HomePage() {
             </option>
           ))}
         </select>
-        <br />
-        <label>Schedule:</label>
-        <select
-          className="homepage-button"
-          value={selectedSchedule}
-          onChange={handleScheduleChange}
-        >
-          <option value="daily">Daily</option>
-          <option value="weekly">Weekly</option>
-          <option value="monthly">Monthly</option>
-        </select>
-        {applyButton}
         <p>Set a timer for the device.</p>
       </div>
     ),
@@ -98,8 +86,13 @@ function HomePage() {
           alt="Blank 100px by 100px image"
           style={{ width: "100px", height: "100px" }}
         />
-        {applyButton}
-        <p>Here we'll have 1 dropdown (Select light sensitivity) and maybe an image of light data history?</p>
+        <button
+          onClick={() => handleButtonClick("Option3")}
+          className="homepage-button"
+        >
+          Click me
+        </button>
+        <p>Here we'll have 1 dropdown (Select light sensitivity) and 2 buttons to toggle mode and maybe an image of light data history?</p>
       </div>
     ),
     "System control": (
