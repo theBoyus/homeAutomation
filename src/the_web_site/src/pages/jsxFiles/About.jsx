@@ -16,10 +16,12 @@ function About() {
       <div>
         <div>
           <div className="titleBox2">
-            <h3>Contact us</h3>
+            <h3>Links</h3>
           </div>
           <div className="txtContainer1">
-            <p>Some text goes here.</p>
+          <p>Link to our: 
+            <a href="https://gitlab.lnu.se/ll224hf/homeautomation">Repository</a>
+            </p>
           </div>
         </div>
       </div>
