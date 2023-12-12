@@ -4,7 +4,7 @@ import { useState } from "react";
 import "../css/HomePage.css";
 
 function HomePage() {
-  const options = ["option1", "option2", "option3", "option4"];
+  const options = ["Manual Switch", "Schedule", "Light-based", "System control"];
   const [selectedOption, setSelectedOption] = useState(null);
 
   const handleOptionChange = (option) => {
