@@ -39,5 +39,13 @@ Meeting to work on the website.
 Made the about page structure and design
 
 # 12/12-23
+
 ## 10:00
 
+More website working.
+
+# 14/12-23
+
+## 18:00
+
+Further work on the website, and testing of light-sensors.
