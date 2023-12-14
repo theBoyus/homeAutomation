@@ -46,6 +46,6 @@ More website working.
 
 # 14/12-23
 
-## 18:00
+## 18:00 -> 19:30
 
-Further work on the website, and testing of light-sensors.
+Further work on the website and testing of light-sensors.

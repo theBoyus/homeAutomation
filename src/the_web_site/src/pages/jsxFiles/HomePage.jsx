@@ -1,11 +1,17 @@
-// HomePage.js
-
-import { useState } from "react";
+import React, { useState } from "react";
+import TimePicker from "react-time-picker";
 import "../css/HomePage.css";
 
 function HomePage() {
-  const options = ["Manual Switch", "Schedule", "Light-based", "System control"];
+  const options = [
+    "Manual Switch",
+    "Schedule",
+    "Light-based",
+    "System control",
+  ];
   const [selectedOption, setSelectedOption] = useState(null);
+  const [startTime, setStartTime] = useState("12:00");
+  const [endTime, setEndTime] = useState("12:00");
 
   const handleOptionChange = (option) => {
     setSelectedOption(option);
@@ -16,105 +22,15 @@ function HomePage() {
     // Add your logic here for button actions
   };
 
-  const [starthour, setStarthour] = useState("");
-  const [endhour, setEndhour] = useState("");
-
-  const handlestartHourChange = (event) => {
-    setStarthour(event.target.value);
+  const handleApplySettings = () => {
+    console.log("Settings applied:", { startTime, endTime });
+    // Add logic to apply settings
   };
 
-  const handleendHourChange = (event) => {
-    setEndhour(event.target.value);
+  const handleResetTimers = () => {
+    setStartTime("00:00");
+    setEndTime("00:00");
   };
-
-  const generateHours = () => {
-    return Array.from({ length: 24 }, (_, index) => index);
-  };
-
-  const contentMap = {
-    "Manual Switch": (
-      <div>
-        <button
-          onClick={() => handleButtonClick("On")}
-          className="homepage-button"
-        >
-          On
-        </button>
-        <button
-          onClick={() => handleButtonClick("Off")}
-          className="homepage-button"
-        >
-          Off
-        </button>
-        <p>Turns the LED On or OFF</p>
-      </div>
-    ),
-    "Schedule": (
-      <div>
-        <label>Start Time:</label>
-        <select
-          className="homepage-button start"
-          value={starthour}
-          onChange={handlestartHourChange}
-        >
-          {generateHours().map((h) => (
-            <option key={h} value={h}>
-              {h < 10 ? `0${h}:00` : `${h}:00`}
-            </option>
-          ))}
-        </select>
-        <br />
-        <label>End Time:</label>
-        <select
-          className="homepage-button end"
-          value={endhour}
-          onChange={handleendHourChange}
-        >
-          {generateHours().map((h) => (
-            <option key={h} value={h}>
-              {h < 10 ? `0${h}:00` : `${h}:00`}
-            </option>
-          ))}
-        </select>
-        <p>Set a timer for the device.</p>
-      </div>
-    ),
-    "Light-based": (
-      <div>
-        <img
-          src="https://via.placeholder.com/100"
-          alt="Blank 100px by 100px image"
-          style={{ width: "100px", height: "100px" }}
-        />
-        <button
-          onClick={() => handleButtonClick("Option3")}
-          className="homepage-button"
-        >
-          Click me
-        </button>
-        <p>Here we'll have 1 dropdown (Select light sensitivity) and 2 buttons to toggle mode and maybe an image of light data history?</p>
-      </div>
-    ),
-    "System control": (
-      <div>
-        <button
-          onClick={() => handleButtonClick("Shut it down")}
-          className="homepage-button"
-        >
-          Shut it down
-        </button>
-        <button
-          onClick={() => handleButtonClick("Boot it up")}
-          className="homepage-button"
-        >
-          Boot it up
-        </button>
-        <p>Control the device state.</p>
-      </div>
-    ),
-  };
-
-  const content = contentMap[selectedOption] || "Select one of the options to be shown more.";
 
   return (
     <div className="homepage-container">
@@ -134,7 +50,91 @@ function HomePage() {
       </div>
 
       {/* Right Box */}
-      <div className="right-box">{content}</div>
+      <div className="right-box">
+        {selectedOption === "Manual Switch" && (
+          <div>
+            <button
+              onClick={() => handleButtonClick("On")}
+              className="homepage-button"
+            >
+              On
+            </button>
+            <button
+              onClick={() => handleButtonClick("Off")}
+              className="homepage-button"
+            >
+              Off
+            </button>
+            <p>Turns the LED On or OFF</p>
+          </div>
+        )}
+
+        {selectedOption === "Schedule" && (
+          <div>
+            <label>Start Time:</label>
+            <input
+              type="time"
+              value={startTime}
+              onChange={(e) => setStartTime(e.target.value)}
+              className="homepage-button"
+            />
+            <br />
+            <label>End Time:</label>
+            <input
+              type="time"
+              value={endTime}
+              onChange={(e) => setEndTime(e.target.value)}
+              className="homepage-button"
+            />
+            <br />
+            <button onClick={handleApplySettings} className="homepage-button">
+              Apply Settings
+            </button>
+            <button onClick={handleResetTimers} className="homepage-button">
+              Reset Timers
+            </button>
+            <p>Set a timer for the device.</p>
+          </div>
+        )}
+
+        {selectedOption === "Light-based" && (
+          <div>
+            <img
+              src="https://via.placeholder.com/100"
+              alt="Blank 100px by 100px image"
+              style={{ width: "100px", height: "100px" }}
+            />
+            <button
+              onClick={() => handleButtonClick("Option3")}
+              className="homepage-button"
+            >
+              Click me
+            </button>
+            <p>
+              Here we'll have 1 dropdown (Select light sensitivity) and 2
+              buttons to toggle mode and maybe an image of light data history?
+            </p>
+          </div>
+        )}
+
+        {selectedOption === "System control" && (
+          <div>
+            <button
+              onClick={() => handleButtonClick("Shut it down")}
+              className="homepage-button"
+            >
+              Shut it down
+            </button>
+            <button
+              onClick={() => handleButtonClick("Boot it up")}
+              className="homepage-button"
+            >
+              Boot it up
+            </button>
+            <p>Control the device state.</p>
+          </div>
+        )}
+      </div>
     </div>
   );
 }

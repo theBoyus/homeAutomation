@@ -34,3 +34,54 @@
 .homepage-button {
   margin: 4 4 4 4;
 }
+
+.time-input-container {
+  display: flex;
+  align-items: center;
+}
+
+.time-select {
+  appearance: none;
+  -webkit-appearance: none;
+  -moz-appearance: none;
+  border: 1px solid #ccc;
+  padding: 8px;
+  margin: 4px;
+  border-radius: 4px;
+  font-size: 14px;
+  outline: none;
+  cursor: pointer;
+  width: 50px; /* Adjust as needed */
+}
+
+.time-select::-ms-expand {
+  display: none;
+}
+
+.time-separator {
+  margin: 0 5px;
+}
+
+/* Styling for the "wheel" effect */
+.time-select {
+  background-color: #fff;
+  background-image: linear-gradient(to bottom, #f8f8f8, #e0e0e0);
+  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+}
+
+.time-select:hover {
+  background-color: #e0e0e0;
+}
+
+.time-select:focus {
+  border-color: #2196f3;
+}
+
+.time-select option {
+  background-color: #fff;
+  padding: 8px;
+}
+
+.time-select option:hover {
+  background-color: #e0e0e0;
+}
