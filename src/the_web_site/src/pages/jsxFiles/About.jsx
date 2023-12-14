@@ -10,21 +10,16 @@ function About() {
         </div>
         <div className="txtContainer1">
           <p>
-            Lorem ipsum dolor sit amet, consectetur adipiscing elit. Mauris
-            eleifend sed nisl non dapibus. Praesent finibus eros at libero
-            commodo, eu malesuada erat malesuada. Nulla pulvinar ligula eget
-            neque posuere, in tempor dui pharetra. Nam ut tincidunt felis.
-            Aliquam et ipsum mollis, vulputate libero non, pellentesque nisl.
-            Etiam iaculis scelerisque lectus, et feugiat enim dictum vel.
-            Vestibulum posuere consequat viverra. Phasellus ut sem tempor,
-            feugiat nunc imperdiet, bibendum leo. Curabitur fringilla magna non
-            mi convallis euismod. In hac habitasse platea dictumst. Integer quis
-            tempor purus, a vulputate lacus.
+            "We are a group consisting of three engineers attending Linneus
+            University. We created this website for our group project in the
+            course 'Introduction to Projects,' where we are focusing on home
+            automation using lights to improve energy efficiency. This project
+            will take place from the end of November to early January."
           </p>
         </div>
       </div>
       <div>
-        <div>
+        <div className="secondContainer">
           <div className="titleBox2">
             <h3>Links</h3>
           </div>
@@ -35,6 +30,11 @@ function About() {
                 Repository
               </a>
             </p>
+          </div>
+        </div>
+        <div>
+          <div>
+            <h3></h3>
           </div>
         </div>
       </div>
