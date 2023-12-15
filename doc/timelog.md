@@ -49,3 +49,8 @@ More website working.
 ## 18:00 -> 19:30
 
 Further work on the website and testing of light-sensors.
+
+# 15/12-23
+## 13:00
+
+Meeting 2, came to some ideas on what we need to do more work on, we're at a good spot currently.

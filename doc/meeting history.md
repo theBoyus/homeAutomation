@@ -18,8 +18,19 @@ We're unsure of whether to go for a motionsensor to turn on/off lights. Or light
 Lightsensors are cheaper 👌
 
 Lightsensors it is!
-##
 
 Website structure is functional, and sensors have been ordered.
 
 # Meeting 2
+
+
+Finalize the requierments.md and other documentation.
+
+In general the website's presentation and use friendlyness is important. But presenting the data takes importance, is it easy to understand for people that aren't read into the project.
+
+Make calculations on powerconsumption and decide what's best. It's not necessary to change based on conclusion but the conclusion itself is important.
+
+#
+If we need more meetings after new-years we should request that a couple of days before (If we really need to discuss the topic).
+
+# Meeting 3
