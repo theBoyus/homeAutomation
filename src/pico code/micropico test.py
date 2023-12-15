@@ -1,12 +1,12 @@
 from machine import Pin, ADC
 from time import sleep
 
+
 led = Pin("LED", Pin.OUT)
 led.toggle()
 lone_sense = ADC(Pin(27))
 bigger_sense = ADC(Pin(28))
 button = Pin(20, Pin.IN)
-
 
 try:
     while True:
@@ -20,5 +20,6 @@ try:
                 print("SMOL SAYS IT'S FUCKING BRIGHT OUT")
             if bigg < 500:
                 print("BIGG SAYS IT'S FUCKING BRIGHT OUT")
+
 except KeyboardInterrupt:
     print("Stopped")
