@@ -35,3 +35,13 @@ Make calculations on power consumption and decide what's best. It's not necessar
 If we need more meetings after new-years we should request that a couple of days before (If we really need to discuss the topic).
 
 # Meeting 3
+
+Considering we have focused more on lab 5 this week considering the deadline comming up.
+
+### Things to consider
+- the video
+    - max 10 mintutes, even 3-4 minutes is fine.
+    - doesn't have to be serious.
+- presentation
+    - max 10 mintues
+    - powerpoint or just vocal presentation? 
