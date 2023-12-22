@@ -11,6 +11,7 @@ function Toolbar() {
             <button className="button-16" onClick={() => navigateTo('/')}>Home</button>
             <button className="button-16" onClick={() => navigateTo('/Graphs')}>Graphs</button>
             <button className="button-16" onClick={() => navigateTo('/About')}>About</button>
+            <button className="button-16" onClick={() => navigateTo('/AdafruitIO')}>AdafruitIO</button>
         </div>
     );
 };
