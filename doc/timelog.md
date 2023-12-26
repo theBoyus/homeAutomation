@@ -67,3 +67,7 @@ Meeting and we discussed methods on how to connect the pico to the website and h
 ## ??:?? - 02:30
 
 Samuel big brained and made a login for the website alongside more on integrations with adafruit, more on that at a later date.
+
+## 03:00
+
+Added a library to test with micropython and the pico. If it interacts well with the tsl2591 module we have I'll leave to testing tomorrow or someday (TM).
