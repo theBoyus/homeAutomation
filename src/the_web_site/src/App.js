@@ -5,7 +5,7 @@ import {
   Route,
   Navigate,
 } from "react-router-dom";
-import HomePage from "./pages/jsxFiles/HomePage";
+import HomePage from "./pages/jsxFiles/HomePage/HomePage";
 import Toolbar from "./pages/jsxFiles/Toolbar";
 import Graphs from "./pages/jsxFiles/Graphs";
 import About from "./pages/jsxFiles/About";

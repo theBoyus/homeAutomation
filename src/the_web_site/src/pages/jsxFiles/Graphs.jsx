@@ -1,6 +1,5 @@
 import { useState } from "react";
 import "../css/Graph.css";
-import PicoHandler from "./PicoHandler";
 
 function Graphs() {
   function importAllImages(r) {
@@ -10,8 +9,7 @@ function Graphs() {
     require.context("../../img", false, /\.(png|jpe?g|svg|gif)$/)
   );
   const [currentImage, setCurrentImage] = useState(images[0]);
-  console.log(images);
-  PicoHandler()
+
   return (
     <div>
       <>selfies with the boys</>
