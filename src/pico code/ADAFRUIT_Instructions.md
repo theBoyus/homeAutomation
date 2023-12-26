@@ -1,7 +1,7 @@
 
 # Running adafruit.py on Raspberry Pi Pico
 
-To successfully run the `adafruit.py` script on your Raspberry Pi Pico, you'll need to create a configuration file named `config.txt` and save it on the Pi Pico. This file should contain several key pieces of information that the script uses to connect to Adafruit IO and your WiFi network.
+To successfully run the `adafruit.py` script on your Raspberry Pi Pico, you'll need to create a configuration file named `config.txt` and save it on the root folder of Pi Pico. This file should contain several key pieces of information that the script uses to connect to Adafruit IO and your WiFi network.
 
 ## Configuration File Format
 
@@ -24,7 +24,7 @@ Replace the placeholder text (e.g., `<Your WiFi SSID>`) with your actual informa
 - `MQTT_HOST`: The server for Adafruit IO. Default is `io.adafruit.com` (use as-is for Adafruit IO).
 - `MQTT_USERNAME`: Your username as registered on Adafruit IO.
 - `MQTT_PASSWORD`: Your Adafruit IO Key (found in your Adafruit IO account settings).
-- `MQTT_PUBLISH_TOPIC`: The topic to which you'll be publishing data. Format it as `username/feeds/feedname` (no quotes needed).
+- `MQTT_PUBLISH_TOPIC`: The topic to which you'll be publishing data. Format it as `username/feeds/feedname` (no quotes needed)(`data` is the feed name used on the website).
 - `MQTT_CLIENT_ID`: A unique identifier for your device. It should be unique to avoid conflicts with other users.
 
 ### Example `config.txt`
