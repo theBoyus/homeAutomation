@@ -70,4 +70,8 @@ Samuel big brained and made a login for the website alongside more on integratio
 
 ## 03:00
 
-Added a library to test with micropython and the pico. If it interacts well with the tsl2591 module we have I'll leave to testing tomorrow or someday (TM).
+Added a library to test with micropython and the pico. If it interacts well with the tsl2591 module we have I'll leave to testing in the morning or someday (TM).
+
+## 15:00
+
+Working on the website to get the pico integrated.

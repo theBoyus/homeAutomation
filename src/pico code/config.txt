@@ -1,0 +1,7 @@
+WIFI_SSID="Hardstuck Iron"
+WIFI_PASSWORD=hashtagpunktpassword
+MQTT_HOST=io.adafruit.com
+MQTT_USERNAME=Flabb
+MQTT_PASSWORD=aio_QwwX66wXGs8YyO5XNnxcR4VQrzaM
+MQTT_PUBLISH_TOPIC=Flabb/Feeds/data
+MQTT_CLIENT_ID=a_dirty_dataslut3000
