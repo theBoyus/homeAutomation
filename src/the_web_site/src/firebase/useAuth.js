@@ -15,22 +15,22 @@ export function AuthProvider({ children }) {
   useEffect(() => {
     const auth = getAuth();
     const unsubscribe = onAuthStateChanged(auth, async (user) => {
-      setCurrentUser(user);
       if (user) {
+        // User is signed in
+        setCurrentUser(user);
         const credentials = await getMQTTCredentials(user.uid);
         setMqttCredentials(credentials);
       } else {
+        // User is not signed in
+        setCurrentUser(null);
         setMqttCredentials(null);
       }
     });
 
-    return unsubscribe;
+    return unsubscribe; // Unsubscribe on cleanup
   }, []);
 
-  const value = {
-    currentUser,
-    mqttCredentials,
-  };
+  const value = { currentUser, mqttCredentials };
 
   return <AuthContext.Provider value={value}>{children}</AuthContext.Provider>;
 }
