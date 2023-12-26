@@ -61,3 +61,9 @@ Meeting 2, came to some ideas on what we need to do more work on, we're at a goo
 ## 18:00
 
 Meeting and we discussed methods on how to connect the pico to the website and how to push data here and there. Also talked more about requirements.
+
+# 26/12-23
+
+## ??:?? - 02:30
+
+Samuel big brained and made a login for the website alongside more on integrations with adafruit, more on that at a later date.
