@@ -58,7 +58,6 @@ const AdafruitIO = () => {
       <div>
         Latest Data: {latestData}
       </div>
-      <h1>THIS WON'T WORK ON THE HOSTED WEBSITE FOR NOW, RUN IT LOCALLY</h1>
     </div>
   );
 };
