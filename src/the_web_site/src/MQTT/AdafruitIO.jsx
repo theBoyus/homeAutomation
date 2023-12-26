@@ -1,9 +1,13 @@
 import React, { useState, useEffect } from 'react';
 import axios from 'axios';
+import { useAuth } from '../firebase/useAuth';
+
 
 const AdafruitIO = () => {
-  const AIO_USERNAME = process.env.REACT_APP_MQTT_USERNAME;
-  const AIO_KEY = process.env.REACT_APP_MQTT_PASSWORD;
+  const { mqttCredentials } = useAuth();
+  console.log(mqttCredentials)
+  const AIO_USERNAME = mqttCredentials?.mqtt_username;
+  const AIO_KEY = mqttCredentials?.mqtt_password;
   const API_BASE_URL = 'https://io.adafruit.com/api/v2';
   const FEED_KEY = 'data'; // change this if you have other feed name
 
@@ -37,18 +41,20 @@ const AdafruitIO = () => {
     });
   };
 
-  useEffect(() => {
-    const interval = setInterval(() => {
-      fetchLatestFeedData();
-    }, 20000);
+  const fetchdata = () => {
+    fetchLatestFeedData();
+  }
 
-    return () => clearInterval(interval);
-  }, []);
+  useEffect(() => {
+  fetchLatestFeedData();
+}, []);
+
 
   return (
     <div>
       <button onClick={() => sendDataToFeed("1")}>Send 1</button>
       <button onClick={() => sendDataToFeed("0")}>Send 0</button>
+      <button onClick={() => fetchdata()}>fetch data</button>
       <div>
         Latest Data: {latestData}
       </div>
