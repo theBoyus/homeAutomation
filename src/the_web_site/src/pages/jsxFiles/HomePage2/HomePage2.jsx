@@ -1,5 +1,5 @@
-import React, { useState } from "react";
-import LightSwitch from "./LightSwitch"; // Import LightSwitch component
+import { useState } from "react";
+import LightSwitch from "./LightSwitch";
 import "../../css/HomePage2.css";
 import Schedule from "./Schedule";
 
@@ -41,7 +41,6 @@ const HomePage2 = () => {
 
       {activeElement === "lightSwitch" && <LightSwitch />}
       {activeElement === "schedule" && <Schedule />}
-      {/* Other elements for schedule, lightBased, and systemControl */}
     </div>
   );
 };
