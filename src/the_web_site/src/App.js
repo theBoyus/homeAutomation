@@ -16,6 +16,7 @@ import "./App.css";
 import { DataProvider } from "./pages/DataContext";
 import { getAuth, onAuthStateChanged } from "firebase/auth";
 import { Audio } from "react-loader-spinner";
+import HomePage2 from "./pages/jsxFiles/HomePage2/HomePage2";
 
 function App() {
   return (
@@ -45,17 +46,7 @@ const AppRoutes = () => {
   }, []);
 
   if (!authInitialized) {
-    return (
-      <Audio
-        height="80"
-        width="80"
-        radius="9"
-        color="green"
-        ariaLabel="loading"
-        wrapperStyle
-        wrapperClass
-      />
-    );
+    return <Audio />;
   }
 
   return (
@@ -72,9 +63,9 @@ const AppRoutes = () => {
           {currentUser ? (
             <>
               <Route path="/" element={<HomePage />} />
+              <Route path="/home" element={<HomePage2 />} />
               <Route path="/Graphs" element={<Graphs />} />
               <Route path="/About" element={<About />} />
-              <Route path="/AdafruitIO" element={<AdafruitIO />} />
             </>
           ) : (
             <Route path="*" element={<Navigate replace to="/SignIn" />} />

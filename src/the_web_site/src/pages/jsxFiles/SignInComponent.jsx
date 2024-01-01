@@ -1,6 +1,5 @@
 import React, { useState } from "react";
 import signIn from "../../firebase/auth_signin_password";
-import { useAuth } from "../../firebase/useAuth";
 import { useNavigate } from "react-router-dom";
 import "../css/SignInComponent.css";
 
@@ -8,14 +7,12 @@ const SignInComponent = () => {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
   const [error, setError] = useState("");
-  const { currentUser } = useAuth();
   const navigate = useNavigate();
 
   const handleSubmit = (e) => {
     e.preventDefault();
     signIn(email, password)
       .then(() => {
-        console.log("Signed in user:", currentUser);
         navigate("/");
       })
       .catch((error) => {

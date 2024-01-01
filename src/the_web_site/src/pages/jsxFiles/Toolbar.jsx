@@ -15,13 +15,23 @@ function Toolbar() {
   });
 };
     return (
-        <div className="toolbar">
-            <button className="button-16" onClick={() => navigateTo('/')}>Home</button>
-            <button className="button-16" onClick={() => navigateTo('/Graphs')}>Graphs</button>
-            <button className="button-16" onClick={() => navigateTo('/About')}>About</button>
-            <button className="button-16" onClick={() => navigateTo('/AdafruitIO')}>AdafruitIO</button>
-            <button onClick={handleSignOut} className="sign-out-button">Sign Out</button>
-        </div>
+      <div className="toolbar">
+        <button className="button-16" onClick={() => navigateTo("/")}>
+          Home
+        </button>
+        <button className="button-16" onClick={() => navigateTo("/home")}>
+          Home2
+        </button>
+        <button className="button-16" onClick={() => navigateTo("/Graphs")}>
+          Graphs
+        </button>
+        <button className="button-16" onClick={() => navigateTo("/About")}>
+          About
+        </button>
+        <button onClick={handleSignOut} className="sign-out-button">
+          Sign Out
+        </button>
+      </div>
     );
 };
 

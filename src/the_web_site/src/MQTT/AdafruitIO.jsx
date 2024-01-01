@@ -1,6 +1,8 @@
 import React, { useState, useEffect } from "react";
 import axios from "axios";
 import { useAuth } from "../firebase/useAuth";
+import { Audio } from "react-loader-spinner";
+import "./adafruit.css"
 
 const AdafruitIO = () => {
   const { mqttCredentials } = useAuth();
@@ -58,7 +60,22 @@ const AdafruitIO = () => {
       <button onClick={() => sendDataToFeed("1")}>Send 1</button>
       <button onClick={() => sendDataToFeed("0")}>Send 0</button>
       <button onClick={fetchLatestFeedData}>Fetch Data</button>
-      <div>Latest Data: {latestData}</div>
+      {latestData ? (
+        <div>Latest Data: {latestData}</div>
+      ) : (
+        <div className="container">
+          <span>Latest Data: </span>
+          <Audio
+            height="15"
+            width="15"
+            radius="9"
+            color="green"
+            ariaLabel="loading"
+            wrapperStyle
+            wrapperClass
+          />
+        </div>
+      )}
     </div>
   );
 };
