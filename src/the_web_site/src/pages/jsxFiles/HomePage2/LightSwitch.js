@@ -1,10 +1,10 @@
-import React, { useState, useEffect } from "react";
+import { useState, useEffect } from "react";
 import MqttFunctions from "../../../MQTT/MqttFunctions";
 import "../../css/LightSwitch.css";
 import { DNA } from "react-loader-spinner";
 
 const LightSwitch = () => {
-  const { latestData, fetchLatestFeedData, sendDataToFeed } = MqttFunctions();
+  const { latestData, fetchLatestFeedData, sendDataToFeed } = MqttFunctions("data");
   const [isChecked, setIsChecked] = useState(false);
 
   useEffect(() => {

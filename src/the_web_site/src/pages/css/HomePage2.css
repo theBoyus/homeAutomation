@@ -1,9 +1,11 @@
 .mainContainer {
+  display: block;
   width: 620px;
-  background-color: rgb(247, 247, 247);
+  background-color: rgba(247, 247, 247, 0);
   border: 0.5px solid;
   border-color: aliceblue;
   border-radius: 20px;
+  height: 300px;
 }
 .optionsContainer {
   display: flex;
@@ -35,4 +37,13 @@ top:0.1em;
   display:block;
   margin:0.4em auto;
 }
+}
+.welcomeMessage{
+  color: white;
+}
+.activeElementContainer {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 250px;
 }

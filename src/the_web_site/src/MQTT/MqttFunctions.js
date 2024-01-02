@@ -2,12 +2,12 @@ import { useState, useCallback, useContext } from "react";
 import axios from "axios";
 import { useAuth } from "../firebase/useAuth";
 
-const MqttFunctions = () => {
+const MqttFunctions = (feed) => {
   const { mqttCredentials } = useAuth();
   const AIO_USERNAME = mqttCredentials?.mqtt_username;
   const AIO_KEY = mqttCredentials?.mqtt_password;
   const API_BASE_URL = "https://io.adafruit.com/api/v2";
-  const FEED_KEY = "data"; // Change this to your feed name
+  const FEED_KEY = feed; // Change this to your feed name
 
   const [latestData, setLatestData] = useState("");
 

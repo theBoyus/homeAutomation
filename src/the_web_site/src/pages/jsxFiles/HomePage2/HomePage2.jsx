@@ -38,9 +38,15 @@ const HomePage2 = () => {
           System control
         </button>
       </div>
-
-      {activeElement === "lightSwitch" && <LightSwitch />}
-      {activeElement === "schedule" && <Schedule />}
+      <div className="activeElementContainer">
+        {activeElement === null && (
+          <div className="welcomeMessage">
+            Welcome! Please select an option.
+          </div>
+        )}
+        {activeElement === "lightSwitch" && <LightSwitch />}
+        {activeElement === "schedule" && <Schedule />}
+      </div>
     </div>
   );
 };

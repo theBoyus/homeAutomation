@@ -1,31 +1,38 @@
 import { useState, useEffect } from "react";
-import Clock from "react-live-clock";
 import { useData } from "../../DataContext";
+import "../../css/Schedule.css";
+import { Trash } from "react-bootstrap-icons";
+import MqttFunctions from "../../../MQTT/MqttFunctions";
 
 function Schedule() {
   const { data, updateData } = useData();
-  const [timeLeft, setTimeLeft] = useState("");
-  const [isScheduled, setIsScheduled] = useState(false);
+  const [scheduledMessages, setScheduledMessages] = useState([]);
+  const [action, setAction] = useState("Turn On");
+
+  // Initialize MQTT functions
+  const mqtt = MqttFunctions("schedule");
 
   useEffect(() => {
-    const storedTime = localStorage.getItem("scheduledTime");
-    if (storedTime) {
-      updateData("scheduledTime", storedTime);
-      setIsScheduled(true);
+    const storedMessages = JSON.parse(
+      localStorage.getItem("scheduledMessages")
+    );
+    if (storedMessages) {
+      setScheduledMessages(storedMessages);
     }
   }, []);
 
   useEffect(() => {
-    let interval;
-    if (isScheduled && data.scheduledTime) {
-      interval = setInterval(() => {
-        const remainingTime = calculateTimeLeft(data.scheduledTime);
-        setTimeLeft(remainingTime);
-      }, 1000);
-    }
+    const interval = setInterval(() => {
+      setScheduledMessages((currentMessages) =>
+        currentMessages.map((message) => ({
+          ...message,
+          timeLeft: calculateTimeLeft(message.time),
+        }))
+      );
+    }, 1000);
 
     return () => clearInterval(interval);
-  }, [isScheduled, data.scheduledTime]);
+  }, []);
 
   const calculateTimeLeft = (scheduledTime) => {
     const now = new Date();
@@ -50,35 +57,98 @@ function Schedule() {
 
     const hoursLeft = Math.floor(timeDiff / (1000 * 60 * 60));
     const minutesLeft = Math.floor((timeDiff % (1000 * 60 * 60)) / (1000 * 60));
-
-    return `${hoursLeft} hours, ${minutesLeft} minutes`;
+    return `${hoursLeft}h ${minutesLeft}m left`;
   };
 
   const handleTimeChange = (event) => {
     updateData("scheduledTime", event.target.value);
   };
 
-  const handleSetSchedule = () => {
-    setIsScheduled(true);
-    localStorage.setItem("scheduledTime", data.scheduledTime);
-    console.log(`Scheduled Time: ${data.scheduledTime}`);
+  const handleActionChange = (event) => {
+    setAction(event.target.value);
   };
 
+  const handleSetSchedule = () => {
+    if (!data.scheduledTime) {
+      return;
+    }
+    const newMessage = {
+      time: data.scheduledTime,
+      timeLeft: calculateTimeLeft(data.scheduledTime),
+      action: action,
+    };
+
+    const updatedMessages = [...scheduledMessages, newMessage];
+    setScheduledMessages(updatedMessages);
+    localStorage.setItem("scheduledMessages", JSON.stringify(updatedMessages));
+    updateData("scheduledTime", "");
+
+    // Send MQTT message with delete flag set to false
+    const state = action === "Turn On" ? 1 : 0;
+    const mqttData = JSON.stringify({
+      time: data.scheduledTime,
+      state: state,
+      delete: false,
+    });
+    mqtt.sendDataToFeed(mqttData);
+  };
+
+
+  const removeMessage = (index) => {
+    const messageToRemove = scheduledMessages[index];
+
+    const updatedMessages = scheduledMessages.filter((_, i) => i !== index);
+    setScheduledMessages(updatedMessages);
+    localStorage.setItem("scheduledMessages", JSON.stringify(updatedMessages));
+
+    // Send MQTT delete message with delete flag set to true
+    const state = messageToRemove.action === "Turn On" ? 1 : 0;
+    const mqttDeleteData = JSON.stringify({
+      time: messageToRemove.time,
+      state: state,
+      delete: true,
+    });
+    mqtt.sendDataToFeed(mqttDeleteData);
+  };
+
+
   return (
-    <div>
-      <Clock format={"hh:mm:ss A"} ticking={true} />
-      <div>
-        <label>
+    <div className="scheduleContainer">
+      <div className="inputContainer">
+        <label className="scheduleLabel">
           Schedule Time:
           <input
             type="time"
+            className="timeInput"
             value={data.scheduledTime || ""}
             onChange={handleTimeChange}
           />
         </label>
-        <button onClick={handleSetSchedule}>Set Schedule</button>
+        <select
+          className="actionSelect"
+          onChange={handleActionChange}
+          defaultValue="Turn On"
+        >
+          <option value="Turn On">Turn On</option>
+          <option value="Turn Off">Turn Off</option>
+        </select>
+        <button className="setScheduleButton" onClick={handleSetSchedule}>
+          Set Schedule
+        </button>
       </div>
-      <div>Time Left: {timeLeft}</div>
+      <div className="messagesContainer">
+        {scheduledMessages.map((message, index) => (
+          <div key={index} className="message">
+            <span className="messageContent">
+              {message.time} - {message.action}, {message.timeLeft}
+            </span>
+            <Trash
+              className="removeButton"
+              onClick={() => removeMessage(index)}
+            />
+          </div>
+        ))}
+      </div>
     </div>
   );
 }
