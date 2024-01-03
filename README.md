@@ -1,7 +1,6 @@
 website url: https://home-automation-rouge.vercel.app
 
 - To-do list
-    - Method (Add reference to other docu files, linked so we can navigate readme to readme in gitlab.)
     - Results (show pictures)
 
 # Homeautomation

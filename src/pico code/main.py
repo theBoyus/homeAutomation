@@ -2,6 +2,7 @@ import network
 import time
 from umqtt.simple import MQTTClient
 from machine import Pin, I2C
+import json
 
 # import micropython lib for sensor
 import TSL2591
@@ -20,6 +21,7 @@ def load_config(filename='config.txt'):
 
 # Load the configuration
 config = load_config()
+timelist = []
 
 # WiFi and MQTT Configuration
 wifi_ssid = config.get('WIFI_SSID')
@@ -49,6 +51,18 @@ def on_message(topic, msg):
         red.value(1)
     elif msg == b'0':
         red.value(0)
+    else:
+        if topic == b'Flabb/feeds/schedule':
+            msg_string = msg.decode('utf-8')
+            msg_dict = json.loads(msg_string)
+            # Accessing values in the dictionary
+            if msg_dict["delete"] == False:
+                timelist.append(msg_dict)
+            elif msg_dict["delete"] == True:
+                for i,entries in enumerate(timelist):
+                    if entries["time"] == msg_dict["time"]:
+                        del timelist[i]
+
 
 mqtt_client = MQTTClient(client_id=mqtt_client_id, server=mqtt_host,
                          user=mqtt_username, password=mqtt_password)
@@ -85,7 +99,7 @@ try:
             wait_time = time.ticks_ms()
 
             mqtt_client.publish(mqtt_publish_topic, str(lux))
-
+            print(timelist)
 except KeyboardInterrupt:
     red.value(0)  # Ensure the LED is turned off
     print("Application stopped.")
