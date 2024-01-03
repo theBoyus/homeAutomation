@@ -26,6 +26,7 @@ Here, you'll find quick links to essential project documentation:
 - [Hardware](/doc/hardware.md): Learn about the utilized hardware components.
 - [Setup](/doc/setup.md): Follow step-by-step implementation guidelines.
 - [Test](/doc/test.md): Quick overview of our testing procedures.
+- [Projectplan](projectplan.md): The plan, members and the focus.
 
 These links offer insights into our project's development, providing easy access to key documentation aspects.
 

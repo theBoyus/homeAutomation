@@ -1,38 +1,34 @@
-# The project plan must contain:
+# Project Plan
 
-## Group members
+## Group Members
 
-Samuel Azzawi
+- Samuel Azzawi
+- George Warda
+- Linus Lorensson
 
-George Warda
+## Collaboration Approach
 
-Linus Lorensson
+Our collaborative approach emphasizes mutual support to ensure seamless task coverage. In case of challenges, we have designated contacts, Samuel Berg, and Emil Ulvegården, for additional assistance. 😊❤️
 
-## The members different tasks in the group
+## Project Idea Description and Background
 
-We'll cooperate to make it work together, so that if someone becomes sick another can cover their part.
-Or we contact Samuel Berg or Emil Ulvegården. 😊❤️
+Our project focuses on simplifying the control of home lighting. We have developed a website for manual control and integrated sensors for automated operation. Our system now only  provides scheduled control exclusively for lights.
 
-## Description and background of idea
+## Bill of Material (Utrustningslista)
 
-We came out with the idea thinking of a more convenient way to control home appliances, such as lights, fans, etc. The concept involves creating an app or website for manual control, along with adding sensors for automatic operation. Additionally, a feature for scheduling when these appliances turn on or off can be integrated
+- Ljussensor
+- Digital ljussensor monterad på kort
+- Fotomotstånd CdS 4-7 kohm
+- Raspberry Pico 
 
-## Bill of Material (utrustningslista)
+## General Requirements (Kravspecifikation, Övergripande)
 
-Ljussensor
+Essential components include a website (hosted on GitHub or another service), Raspberry Pico, and various hardware components such as sensors and lights.
 
-Digital ljussensor monterad på kort
+## Time Schedule, Weekly
 
-Fotomotstånd CdS 4-7 kohm
+Scheduled meetings every Monday and Thursday at 10 AM, with an optional Friday meeting to accommodate flexibility.
 
-## General requirements (kravspecifikation, övergripande)
+## Grade Ambition
 
-Website (github or other service?), Picom and other hardware, sensors and lights.
-
-## Time schedule, weekly
-
-Meeting on Monday @10 and Thursday @10. Also an optional time on friday.
-
-## Grade ambition A/B
-
-A
+A/B, aiming for the highest standard.
