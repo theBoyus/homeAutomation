@@ -6,3 +6,7 @@ Still we done get any convertible data really. Hopefully the adafruit gives more
 # 14/12-23
 
 After some struggles we made the adafruit sensor work. the data it gives is increadibly more detailed than the photoresistor module. Definitly more usable.
+
+# 26/12-23
+
+Adafruit sensor works well with micropico lib we found. it now also connects to the website and can push data aswell as pull, i.e turn on or off a light.
