@@ -62,9 +62,9 @@ Meeting 2, came to some ideas on what we need to do more work on, we're at a goo
 
 Meeting and we discussed methods on how to connect the pico to the website and how to push data here and there. Also talked more about requirements.
 
-# 26/12-23
+# 25/12-23 and 26/12-23
 
-## ??:?? - 02:30
+## 19:00 - 02:30
 
 Samuel big brained and made a login for the website alongside more on integrations with adafruit, more on that at a later date.
 
@@ -79,4 +79,14 @@ Working on the website to get the pico integrated. Managed to get the pico to co
 # 03/01-24
 
 ## 13:00 - 14:00
+
 Added another topic for schedule push/pull data for the pico. Pico now pulls schedule data, does nothing with it as of yet. Also updated more documents.
+
+## 14:00 - 16:00
+
+Added more topics into the pico code, made it able to push and pull from multiple topics.
+Updated more documentation and pretty much finished the README.
+
+## 17:00
+
+Setup.md structure work.

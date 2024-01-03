@@ -10,5 +10,6 @@
   ],
   "circuitpython.board.version": null,
   "circuitpython.board.vid": "0x1209",
-  "circuitpython.board.pid": "0xCB74"
+  "circuitpython.board.pid": "0xCB74",
+  "cSpell.words": ["Adafruit", "micropython", "pico"]
 }
