@@ -30,6 +30,7 @@ mqtt_password = config.get('MQTT_PASSWORD')
 mqtt_publish_topic = config.get('MQTT_PUBLISH_TOPIC')
 mqtt_client_id = config.get('MQTT_CLIENT_ID')
 mqtt_subscribe_topic = config.get('MQTT_PUBLISH_TOPIC')
+mqtt_subscribe_topic2 = config.get('MQTT_PUBLISH_TOPIC2')
 
 # Connect to WiFi
 wlan = network.WLAN(network.STA_IF)
@@ -54,6 +55,7 @@ mqtt_client = MQTTClient(client_id=mqtt_client_id, server=mqtt_host,
 mqtt_client.set_callback(on_message)
 mqtt_client.connect()
 mqtt_client.subscribe(mqtt_subscribe_topic)  # Subscribe to the topic
+mqtt_client.subscribe(mqtt_subscribe_topic2)
 
 # LED and Button setup
 red = Pin('GP10', Pin.OUT)
@@ -76,7 +78,7 @@ try:
     while True:
         mqtt_client.check_msg()  # Check for new messages and call on_message
 
-        if time.ticks_ms() - wait_time > 10000:  # Debounce check
+        if time.ticks_ms() - wait_time > 10000:  # Wait time check
             lux = tsl.lux
             print("Lux: {}  ".format(lux))     
 
