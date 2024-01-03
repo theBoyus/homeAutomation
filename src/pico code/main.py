@@ -33,6 +33,7 @@ mqtt_publish_topic = config.get('MQTT_PUBLISH_TOPIC')
 mqtt_client_id = config.get('MQTT_CLIENT_ID')
 mqtt_subscribe_topic = config.get('MQTT_PUBLISH_TOPIC')
 mqtt_subscribe_topic2 = config.get('MQTT_PUBLISH_TOPIC2')
+mqtt_subscribe_topic3 = config.get('MQTT_PUBLISH_TOPIC3')
 
 # Connect to WiFi
 wlan = network.WLAN(network.STA_IF)
@@ -67,9 +68,9 @@ def on_message(topic, msg):
 mqtt_client = MQTTClient(client_id=mqtt_client_id, server=mqtt_host,
                          user=mqtt_username, password=mqtt_password)
 mqtt_client.set_callback(on_message)
-mqtt_client.connect()
-mqtt_client.subscribe(mqtt_subscribe_topic)  # Subscribe to the topic
+mqtt_client.connect()  
 mqtt_client.subscribe(mqtt_subscribe_topic2)
+mqtt_client.subscribe(mqtt_subscribe_topic3) # Subscribe to the topic
 
 # LED and Button setup
 red = Pin('GP10', Pin.OUT)
@@ -99,7 +100,6 @@ try:
             wait_time = time.ticks_ms()
 
             mqtt_client.publish(mqtt_publish_topic, str(lux))
-            print(timelist)
 except KeyboardInterrupt:
     red.value(0)  # Ensure the LED is turned off
     print("Application stopped.")
