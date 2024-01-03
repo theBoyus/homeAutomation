@@ -17,9 +17,17 @@ We wanted to create an easy to use webinterface/app that we could interact with 
 
 Our innovative approach involved a compact circuit, utilizing a Pico and sensor combination, to facilitate the exchange of data. This circuit was then meticulously coded to take intelligent actions based on user-defined parameters such as schedules and ambient light levels. The  objective was to develop a sophisticated system capable of dynamically adjusting lighting conditions, ultimately contributing to some energy savings.   
 
+## Methodology and Documentation
 
-## Method (links to all project documentation)
+Here, you'll find quick links to essential project documentation:
 
+- [Timelog](/doc/timelog.md): Track our team's time and project milestones.
+- [Requirements](/doc/requirements.md): Explore project features and functionalities.
+- [Hardware](/doc/hardware.md): Learn about the utilized hardware components.
+- [Setup](/doc/setup.md): Follow step-by-step implementation guidelines.
+- [Test](/doc/test.md): Quick overview of our testing procedures.
+
+These links offer insights into our project's development, providing easy access to key documentation aspects.
 
 ## Result
 

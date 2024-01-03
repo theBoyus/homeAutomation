@@ -1,12 +1,10 @@
-# 14/12-23
+## Testing Progress and Sensor Optimization
 
-Tested the stand alone sensor and the photoresistor module and the photoresistor module seemed to behave more accurate to light than the standalone.
-Still we done get any convertible data really. Hopefully the adafruit gives more usable data.
+**14/12-23:**
+During this phase, we conducted a thorough assessment of both the standalone sensor and the photoresistor module. Surprisingly, the photoresistor module exhibited a more accurate response to light conditions compared to the standalone sensor. However, the data obtained wasn't easily convertible into actionable insights. In our pursuit of more usable data, we turned our attention to the Adafruit sensor, hopeful that it would provide more comprehensive and reliable information.
 
-# 14/12-23
+**14/12-23:**
+After overcoming initial challenges, we successfully integrated the Adafruit sensor into our system. The data it yielded surpassed our expectations, offering significantly more detailed insights compared to the photoresistor module. The enhanced granularity of the data proved to be a pivotal advancement, ensuring more precise control over our lighting system.
 
-After some struggles we made the adafruit sensor work. the data it gives is increadibly more detailed than the photoresistor module. Definitly more usable.
-
-# 26/12-23
-
-Adafruit sensor works well with micropico lib we found. it now also connects to the website and can push data aswell as pull, i.e turn on or off a light.
+**26/12-23:**
+Building upon the successful integration of the Adafruit sensor, we further optimized its functionality by leveraging the Micropico library. This enhancement not only ensured the sensor's seamless connection to our website but also empowered it to both push and pull data. In practical terms, this meant the sensor could not only transmit data but also trigger actions, such as turning lights on or off. This dual functionality marked a crucial milestone in achieving a more dynamic and responsive lighting control system.
