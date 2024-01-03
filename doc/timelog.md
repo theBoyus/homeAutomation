@@ -75,3 +75,8 @@ Added a library to test with micropython and the pico. If it interacts well with
 ## 15:00 - 17:00
 
 Working on the website to get the pico integrated. Managed to get the pico to communicate and we can now turn a LED ON/OFF as well as pull light sensor data.
+
+# 03/01-24
+
+## 13:00 - 14:00
+Added another topic for schedule push/pull data for the pico. Pico now pulls schedule data, does nothing with it as of yet. Also updated more documents.

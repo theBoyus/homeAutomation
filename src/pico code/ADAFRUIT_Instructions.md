@@ -14,6 +14,7 @@ MQTT_HOST=io.adafruit.com
 MQTT_USERNAME=<Your Adafruit Username>
 MQTT_PASSWORD=<Your Adafruit IO Key>
 MQTT_PUBLISH_TOPIC=<Your Adafruit Publish Topic>
+MQTT_PUBLISH_TOPIC2=<Your Second Adafruit Publish Topic>
 MQTT_CLIENT_ID=<A Unique Client ID>
 ```
 
@@ -25,6 +26,7 @@ Replace the placeholder text (e.g., `<Your WiFi SSID>`) with your actual informa
 - `MQTT_USERNAME`: Your username as registered on Adafruit IO.
 - `MQTT_PASSWORD`: Your Adafruit IO Key (found in your Adafruit IO account settings).
 - `MQTT_PUBLISH_TOPIC`: The topic to which you'll be publishing data. Format it as `username/feeds/feedname` (no quotes needed)(`data` is the feed name used on the website).
+- `MQTT_PUBLISH_TOPIC2`: Just like the previous one, just another topic.
 - `MQTT_CLIENT_ID`: A unique identifier for your device. It should be unique to avoid conflicts with other users.
 
 ### Example `config.txt`
@@ -36,6 +38,7 @@ MQTT_HOST=io.adafruit.com
 MQTT_USERNAME=johndoe
 MQTT_PASSWORD=aio_testKey12345
 MQTT_PUBLISH_TOPIC=johndoe/feeds/myfeed
+MQTT_PUBLISH_TOPIC2=johndoe/feeds/myfeed2
 MQTT_CLIENT_ID=myPicoDevice01
 ```
 
