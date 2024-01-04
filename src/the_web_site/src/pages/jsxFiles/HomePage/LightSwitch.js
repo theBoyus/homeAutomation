@@ -45,7 +45,7 @@ const LightSwitch = () => {
       clearTimeout(sensitivityTimeoutRef.current);
     }
     sensitivityTimeoutRef.current = setTimeout(() => {
-      sendDataToFeed(`sensitivity:${newSensitivity}`, "sensore");
+      sendDataToFeed(`sensitivity:${newSensitivity}`, "sensor");
     }, 3000);
   };
 
