@@ -19,9 +19,6 @@ function Toolbar() {
         <button className="button-16" onClick={() => navigateTo("/")}>
           Home
         </button>
-        <button className="button-16" onClick={() => navigateTo("/home")}>
-          Home2
-        </button>
         <button className="button-16" onClick={() => navigateTo("/Graphs")}>
           Graphs
         </button>

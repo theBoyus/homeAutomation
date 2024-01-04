@@ -1,63 +1,48 @@
-import {useState} from "react";
-import OptionContent from "./OptionContent";
+import { useState } from "react";
+import LightSwitch from "./LightSwitch";
 import "../../css/HomePage.css";
+import Schedule from "./Schedule";
 
-function HomePage() {
-  const options = [
-    "Manual Switch",
-    "Schedule",
-    "Light-based",
-    "System control",
-  ];
-  const [selectedOption, setSelectedOption] = useState(null);
-  const [startTime, setStartTime] = useState("12:00");
-  const [endTime, setEndTime] = useState("12:00");
+const HomePage = () => {
+  const [activeElement, setActiveElement] = useState(null);
 
-  const handleOptionChange = (option) => setSelectedOption(option);
-
-  const handleButtonClick = (action) => console.log(`Button ${action} clicked`);
-
-  const handleApplySettings = () =>
-    console.log("Settings applied:", { startTime, endTime });
-
-  const handleResetTimers = () => {
-    setStartTime("00:00");
-    setEndTime("00:00");
+  const showElement = (elementId) => {
+    setActiveElement(elementId);
   };
 
-  
-
   return (
-    <div className="homepage-container">
-      <div className="options-container">
-        {options.map((option) => (
-          <label key={option} className="option-label">
-            <input
-              type="radio"
-              value={option}
-              checked={selectedOption === option}
-              onChange={() => handleOptionChange(option)}
-            />
-            {option.charAt(0).toUpperCase() + option.slice(1)}
-          </label>
-        ))}
+    <div className="mainContainer">
+      <div className="optionsContainer">
+        <button
+          className="optionsButton"
+          onClick={() => showElement("lightSwitch")}
+        >
+          Light Switch
+        </button>
+        <button
+          className="optionsButton"
+          onClick={() => showElement("schedule")}
+        >
+          Schedule
+        </button>
+        <button
+          className="optionsButton"
+          onClick={() => showElement("Light sensitivity")}
+        >
+          Light-based
+        </button>
       </div>
-      <div className="right-box">
-        <OptionContent
-          selectedOption={selectedOption}
-          startTime={startTime}
-          endTime={endTime}
-          onTimeChange={setStartTime}
-          onEndTimeChange={setEndTime}
-          onApplySettings={handleApplySettings}
-          onResetTimers={handleResetTimers}
-          onButtonClick={handleButtonClick}
-        />
+      <div className="activeElementContainer">
+        {activeElement === null && (
+          <div className="welcomeMessage">
+            Welcome! Please select an option.
+          </div>
+        )}
+        {activeElement === "lightSwitch" && <LightSwitch />}
+        {activeElement === "schedule" && <Schedule />}
       </div>
     </div>
   );
-}
-
-
+};
 
 export default HomePage;

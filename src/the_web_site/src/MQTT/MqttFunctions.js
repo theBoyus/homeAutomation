@@ -7,7 +7,7 @@ const MqttFunctions = (feed) => {
   const AIO_USERNAME = mqttCredentials?.mqtt_username;
   const AIO_KEY = mqttCredentials?.mqtt_password;
   const API_BASE_URL = "https://io.adafruit.com/api/v2";
-  const FEED_KEY = feed; // Change this to your feed name
+  const FEED_KEY = feed;
 
   const [latestData, setLatestData] = useState("");
 

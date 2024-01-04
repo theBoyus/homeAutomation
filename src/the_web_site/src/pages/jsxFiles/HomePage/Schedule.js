@@ -83,7 +83,6 @@ function Schedule() {
     localStorage.setItem("scheduledMessages", JSON.stringify(updatedMessages));
     updateData("scheduledTime", "");
 
-    // Send MQTT message with delete flag set to false
     const state = action === "Turn On" ? 1 : 0;
     const mqttData = JSON.stringify({
       time: data.scheduledTime,
@@ -93,7 +92,6 @@ function Schedule() {
     mqtt.sendDataToFeed(mqttData);
   };
 
-
   const removeMessage = (index) => {
     const messageToRemove = scheduledMessages[index];
 
@@ -101,7 +99,6 @@ function Schedule() {
     setScheduledMessages(updatedMessages);
     localStorage.setItem("scheduledMessages", JSON.stringify(updatedMessages));
 
-    // Send MQTT delete message with delete flag set to true
     const state = messageToRemove.action === "Turn On" ? 1 : 0;
     const mqttDeleteData = JSON.stringify({
       time: messageToRemove.time,
@@ -110,7 +107,6 @@ function Schedule() {
     });
     mqtt.sendDataToFeed(mqttDeleteData);
   };
-
 
   return (
     <div className="scheduleContainer">

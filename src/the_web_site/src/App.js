@@ -9,14 +9,12 @@ import HomePage from "./pages/jsxFiles/HomePage/HomePage";
 import Toolbar from "./pages/jsxFiles/Toolbar";
 import Graphs from "./pages/jsxFiles/Graphs";
 import About from "./pages/jsxFiles/About";
-import AdafruitIO from "./MQTT/AdafruitIO";
 import SignInComponent from "./pages/jsxFiles/SignInComponent";
 import { AuthProvider, useAuth } from "./firebase/useAuth";
 import "./App.css";
 import { DataProvider } from "./pages/DataContext";
 import { getAuth, onAuthStateChanged } from "firebase/auth";
 import { Audio } from "react-loader-spinner";
-import HomePage2 from "./pages/jsxFiles/HomePage2/HomePage2";
 
 function App() {
   return (
@@ -63,7 +61,6 @@ const AppRoutes = () => {
           {currentUser ? (
             <>
               <Route path="/" element={<HomePage />} />
-              <Route path="/home" element={<HomePage2 />} />
               <Route path="/Graphs" element={<Graphs />} />
               <Route path="/About" element={<About />} />
             </>

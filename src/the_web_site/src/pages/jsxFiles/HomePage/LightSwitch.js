@@ -4,7 +4,8 @@ import "../../css/LightSwitch.css";
 import { DNA } from "react-loader-spinner";
 
 const LightSwitch = () => {
-  const { latestData, fetchLatestFeedData, sendDataToFeed } = MqttFunctions("data");
+  const { latestData, fetchLatestFeedData, sendDataToFeed } =
+    MqttFunctions("lightswitch");
   const [isChecked, setIsChecked] = useState(false);
 
   useEffect(() => {
