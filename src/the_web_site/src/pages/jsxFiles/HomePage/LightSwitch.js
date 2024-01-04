@@ -1,38 +1,97 @@
-import { useState, useEffect } from "react";
+import { useState, useEffect, useRef } from "react";
 import MqttFunctions from "../../../MQTT/MqttFunctions";
 import "../../css/LightSwitch.css";
 import { DNA } from "react-loader-spinner";
 
 const LightSwitch = () => {
-  const { latestData, fetchLatestFeedData, sendDataToFeed } =
-    MqttFunctions("lightswitch");
-  const [isChecked, setIsChecked] = useState(false);
+  const { sendDataToFeed, fetchLatestFeedData } = MqttFunctions();
+  const [lightSwitchState, setLightSwitchState] = useState(null);
+  const [sensitivity, setSensitivity] = useState(null);
+  const [autoMode, setAutoMode] = useState(null);
+  const sensitivityTimeoutRef = useRef(null);
 
   useEffect(() => {
-    fetchLatestFeedData();
+    fetchLatestFeedData("lightswitch").then((data) =>{
+      console.log(data)
+      setLightSwitchState(data);
+    }
+    );
+    fetchLatestFeedData("sensor").then((data) => {
+      console.log(data)
+      const sensValueArray = data.split(':');
+      if (sensValueArray.length === 2) {
+        const sensValue = parseInt(sensValueArray[1], 10);
+        if (!isNaN(sensValue)) {
+          setSensitivity(sensValue);
+        }
+      }
+    });
+    fetchLatestFeedData("automanual").then((data) => {
+      console.log(data)
+      setAutoMode(data)
+  })
   }, [fetchLatestFeedData]);
 
-  useEffect(() => {
-    setIsChecked(latestData === "1");
-  }, [latestData]);
+  const handleLightSwitchChange = () => {
+    const newState = lightSwitchState === "1" ? "0" : "1";
+    setLightSwitchState(newState);
+    sendDataToFeed(newState, "lightswitch");
+  };
 
-  const handleOnChange = () => {
-    const newCheckedState = !isChecked;
-    setIsChecked(newCheckedState);
-    sendDataToFeed(newCheckedState ? "1" : "0");
+  const handleSensitivityChange = (e) => {
+    const newSensitivity = e.target.value;
+    setSensitivity(newSensitivity);
+    if (sensitivityTimeoutRef.current) {
+      clearTimeout(sensitivityTimeoutRef.current);
+    }
+    sensitivityTimeoutRef.current = setTimeout(() => {
+      sendDataToFeed(`sensitivity:${newSensitivity}`, "sensore");
+    }, 3000);
+  };
+
+  const handleAutoManualToggle = () => {
+    const newMode = autoMode === "0" ? "1" : "0";
+    setAutoMode(newMode);
+    sendDataToFeed(newMode, "automanual");
   };
 
   return (
     <div className="container">
-      {latestData ? (
-        <div>
-          <input
-            className="toggleLight"
-            type="checkbox"
-            checked={isChecked}
-            onChange={handleOnChange}
-          />
-        </div>
+      {lightSwitchState !== null &&
+      sensitivity !== null &&
+      autoMode !== null ? (
+        <>
+          <div className="toggleLightCon">
+            <input
+              className="toggleLight"
+              type="checkbox"
+              checked={lightSwitchState === "1"}
+              onChange={handleLightSwitchChange}
+            />
+          </div>
+          <div className="sensitivity">
+            <label>Sensitivity:</label>
+            <input
+              type="range"
+              id="sensitivity"
+              name="sensitivity"
+              min="0"
+              max="30"
+              value={sensitivity}
+              onChange={handleSensitivityChange}
+            />
+            <span>{sensitivity}</span>
+          </div>
+          <div className="checkboxCon">
+            <p>auto mode</p>
+            <input
+              type="checkbox"
+              className="checkbox-style"
+              checked={autoMode === "1"}
+              onChange={handleAutoManualToggle}
+            />
+          </div>
+        </>
       ) : (
         <DNA />
       )}

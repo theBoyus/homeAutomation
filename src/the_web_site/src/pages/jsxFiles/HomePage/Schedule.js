@@ -10,7 +10,7 @@ function Schedule() {
   const [action, setAction] = useState("Turn On");
 
   // Initialize MQTT functions
-  const mqtt = MqttFunctions("schedule");
+   const { sendDataToFeed } = MqttFunctions();
 
   useEffect(() => {
     const storedMessages = JSON.parse(
@@ -89,7 +89,7 @@ function Schedule() {
       state: state,
       delete: false,
     });
-    mqtt.sendDataToFeed(mqttData);
+    sendDataToFeed(mqttData, "schedule");
   };
 
   const removeMessage = (index) => {
@@ -105,7 +105,7 @@ function Schedule() {
       state: state,
       delete: true,
     });
-    mqtt.sendDataToFeed(mqttDeleteData);
+    sendDataToFeed(mqttDeleteData, "schedule");
   };
 
   return (
