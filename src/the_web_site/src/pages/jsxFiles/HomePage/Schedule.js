@@ -3,62 +3,70 @@ import { useData } from "../../DataContext";
 import "../../css/Schedule.css";
 import { Trash } from "react-bootstrap-icons";
 import MqttFunctions from "../../../MQTT/MqttFunctions";
+import { DNA } from "react-loader-spinner";
 
 function Schedule() {
   const { data, updateData } = useData();
   const [scheduledMessages, setScheduledMessages] = useState([]);
+  const [timeLeft, setTimeLeft] = useState({});
   const [action, setAction] = useState("Turn On");
+  const [isLoading, setIsLoading] = useState(false);
 
-  // Initialize MQTT functions
-   const { sendDataToFeed } = MqttFunctions();
+  const {
+    sendDataToFeed,
+    fetchAllDataFromFeed,
+    deleteDataPoint,
+  } = MqttFunctions();
 
-  useEffect(() => {
-    const storedMessages = JSON.parse(
-      localStorage.getItem("scheduledMessages")
-    );
-    if (storedMessages) {
-      setScheduledMessages(storedMessages);
-    }
-  }, []);
-
-  useEffect(() => {
-    const interval = setInterval(() => {
-      setScheduledMessages((currentMessages) =>
-        currentMessages.map((message) => ({
-          ...message,
-          timeLeft: calculateTimeLeft(message.time),
-        }))
-      );
-    }, 1000);
-
-    return () => clearInterval(interval);
-  }, []);
-
-  const calculateTimeLeft = (scheduledTime) => {
-    const now = new Date();
-    const [hours, minutes] = scheduledTime.split(":");
-    const scheduledDate = new Date(
-      now.getFullYear(),
-      now.getMonth(),
-      now.getDate(),
-      hours,
-      minutes,
-      0
-    );
-
-    if (scheduledDate.getTime() < now.getTime()) {
-      scheduledDate.setDate(scheduledDate.getDate() + 1);
-    }
-
-    const timeDiff = scheduledDate.getTime() - now.getTime();
-    if (timeDiff < 0) {
-      return "Time has passed";
-    }
-
-    const hoursLeft = Math.floor(timeDiff / (1000 * 60 * 60));
-    const minutesLeft = Math.floor((timeDiff % (1000 * 60 * 60)) / (1000 * 60));
-    return `${hoursLeft}h ${minutesLeft}m left`;
+  const fetchAndUpdateMessages = () => {
+    setIsLoading(true);
+    fetchAllDataFromFeed("schedule")
+      .then((data) => {
+        const newScheduledMessages = data.map((item) => {
+          const message = JSON.parse(item.value);
+          message.key = item.id;
+          return message;
+        });
+        setScheduledMessages(newScheduledMessages);
+        setIsLoading(false);
+      })
+      .catch((error) => console.error("Error fetching data:", error));
   };
+
+  const calculateTimeLeft = () => {
+    const newTimeLeft = {};
+    const now = new Date();
+    scheduledMessages.forEach((message, index) => {
+      const [hours, minutes] = message.time.split(":");
+      const scheduledDate = new Date(
+        now.getFullYear(),
+        now.getMonth(),
+        now.getDate(),
+        hours,
+        minutes,
+        0
+      );
+
+      if (scheduledDate < now) {
+        scheduledDate.setDate(scheduledDate.getDate() + 1);
+      }
+
+      const timeDiff = scheduledDate.getTime() - now.getTime();
+
+      newTimeLeft[index] =
+        timeDiff >= 0
+          ? `${Math.floor(timeDiff / (1000 * 60 * 60))}h ${Math.floor(
+              (timeDiff % (1000 * 60 * 60)) / (1000 * 60)
+            )}m left`
+          : "Done";
+    });
+    setTimeLeft(newTimeLeft);
+  };
+
+  useEffect(() => {
+    const interval = setInterval(calculateTimeLeft, 1000);
+    return () => clearInterval(interval);
+  }, [scheduledMessages]);
 
   const handleTimeChange = (event) => {
     updateData("scheduledTime", event.target.value);
@@ -69,48 +77,63 @@ function Schedule() {
   };
 
   const handleSetSchedule = () => {
-    if (!data.scheduledTime) {
+    if (
+      !data.scheduledTime ||
+      scheduledMessages.some((message) => message.time === data.scheduledTime)
+    ) {
       return;
     }
-    const newMessage = {
-      time: data.scheduledTime,
-      timeLeft: calculateTimeLeft(data.scheduledTime),
-      action: action,
-    };
-
-    const updatedMessages = [...scheduledMessages, newMessage];
-    setScheduledMessages(updatedMessages);
-    localStorage.setItem("scheduledMessages", JSON.stringify(updatedMessages));
-    updateData("scheduledTime", "");
-
     const state = action === "Turn On" ? 1 : 0;
-    const mqttData = JSON.stringify({
+
+    const newmqttdata = JSON.stringify({
       time: data.scheduledTime,
-      state: state,
-      delete: false,
+      state,
+      method: "1",
     });
-    sendDataToFeed(mqttData, "schedule");
+    sendDataToFeed(newmqttdata, "handleschedule")
+      .then((d) => {
+        const mqttData = JSON.stringify({
+          time: data.scheduledTime,
+          state,
+          fakeKey: d.id,
+        });
+        sendDataToFeed(mqttData, "schedule").then(() => {
+          fetchAndUpdateMessages();
+        });
+      })
+      .catch((error) => console.error("Error in sending data:", error));
   };
 
   const removeMessage = (index) => {
-    const messageToRemove = scheduledMessages[index];
-
-    const updatedMessages = scheduledMessages.filter((_, i) => i !== index);
-    setScheduledMessages(updatedMessages);
-    localStorage.setItem("scheduledMessages", JSON.stringify(updatedMessages));
-
-    const state = messageToRemove.action === "Turn On" ? 1 : 0;
-    const mqttDeleteData = JSON.stringify({
-      time: messageToRemove.time,
-      state: state,
-      delete: true,
+    const key = scheduledMessages[index].key;
+    const mqttData = JSON.stringify({
+      time: scheduledMessages[index].time,
+      state: scheduledMessages[index].state,
+      method: "0",
     });
-    sendDataToFeed(mqttDeleteData, "schedule");
+    sendDataToFeed(mqttData, "handleschedule")
+      .then(() => {
+        deleteDataPoint("schedule", key)
+          .then(() => {
+            const updatedMessages = scheduledMessages.filter(
+              (_, i) => i !== index
+            );
+            setScheduledMessages(updatedMessages);
+          })
+          .catch((error) => console.error("Error in removing message:", error));
+        console.log(data);
+      })
+      .catch((error) => console.error("Error in sending message:", error));
   };
+
+  useEffect(() => {
+    fetchAndUpdateMessages();
+  }, []);
 
   return (
     <div className="scheduleContainer">
       <div className="inputContainer">
+        <h2 className="time">{new Date().toLocaleTimeString()}</h2>
         <label className="scheduleLabel">
           Schedule Time:
           <input
@@ -133,17 +156,25 @@ function Schedule() {
         </button>
       </div>
       <div className="messagesContainer">
-        {scheduledMessages.map((message, index) => (
-          <div key={index} className="message">
-            <span className="messageContent">
-              {message.time} - {message.action}, {message.timeLeft}
-            </span>
-            <Trash
-              className="removeButton"
-              onClick={() => removeMessage(index)}
-            />
-          </div>
-        ))}
+        {isLoading ? (
+          <DNA />
+        ) : (
+          scheduledMessages.map((message, index) => (
+            <div key={index} className="message">
+              <span className="messageContent">
+                {message.time} - {message.state === 1 ? "Turn On" : "Turn Off"},{" "}
+                {timeLeft[index] || "Calculating..."}
+              </span>
+              <Trash
+                className="removeButton"
+                onClick={() => removeMessage(index)}
+              />
+            </div>
+          ))
+        )}
+        {scheduledMessages.length === 0 && !isLoading && (
+          <div>No scheduled messages</div>
+        )}
       </div>
     </div>
   );

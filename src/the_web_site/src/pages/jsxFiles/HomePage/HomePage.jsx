@@ -25,12 +25,6 @@ const HomePage = () => {
         >
           Schedule
         </button>
-        <button
-          className="optionsButton"
-          onClick={() => showElement("Light sensitivity")}
-        >
-          Light-based
-        </button>
       </div>
       <div className="activeElementContainer">
         {activeElement === null && (

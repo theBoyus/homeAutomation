@@ -89,3 +89,11 @@
   margin-right: 30px;
   font-size: 25px;
 }
+
+.time{
+  position: absolute;
+  top:0px;
+  z-index: 10000;
+  right: 10px;
+  width: 100px;
+}

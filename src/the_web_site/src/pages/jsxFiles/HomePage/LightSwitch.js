@@ -8,14 +8,14 @@ const LightSwitch = () => {
   const [lightSwitchState, setLightSwitchState] = useState(null);
   const [sensitivity, setSensitivity] = useState(null);
   const [autoMode, setAutoMode] = useState(null);
+  const [showAutoModeMessage, setShowAutoModeMessage] = useState(false);
   const sensitivityTimeoutRef = useRef(null);
 
   useEffect(() => {
-    fetchLatestFeedData("lightswitch").then((data) =>{
-      console.log(data)
+    fetchLatestFeedData("lightswitchstate").then((data) => {
+      console.log(data);
       setLightSwitchState(data);
-    }
-    );
+    });
     fetchLatestFeedData("sensor").then((data) => {
       console.log(data)
       const sensValueArray = data.split(':');
@@ -32,10 +32,35 @@ const LightSwitch = () => {
   })
   }, [fetchLatestFeedData]);
 
+  useEffect(() => {
+    let interval;
+    if (autoMode === "1") {
+      interval = setInterval(() => {
+        fetchLatestFeedData("lightswitchstate").then((data) => {
+          console.log(data);
+          setLightSwitchState(data);
+        });
+      }, 5000);
+    }
+
+    return () => {
+      if (interval) {
+        clearInterval(interval);
+      }
+    };
+  }, [autoMode, fetchLatestFeedData]);
+
   const handleLightSwitchChange = () => {
+    if (autoMode === "1") {
+      setShowAutoModeMessage(true);
+      setTimeout(() => setShowAutoModeMessage(false), 5000);
+      return;
+    }
+    setShowAutoModeMessage(false);
     const newState = lightSwitchState === "1" ? "0" : "1";
     setLightSwitchState(newState);
     sendDataToFeed(newState, "lightswitch");
+    sendDataToFeed(newState, "lightswitchstate");
   };
 
   const handleSensitivityChange = (e) => {
@@ -68,6 +93,11 @@ const LightSwitch = () => {
               checked={lightSwitchState === "1"}
               onChange={handleLightSwitchChange}
             />
+            {showAutoModeMessage && (
+              <p className="autoModeMessage">
+                Auto mode is on, manual control is disabled.
+              </p>
+            )}
           </div>
           <div className="sensitivity">
             <label>Sensitivity:</label>
@@ -97,6 +127,7 @@ const LightSwitch = () => {
       )}
     </div>
   );
+
 };
 
 export default LightSwitch;
