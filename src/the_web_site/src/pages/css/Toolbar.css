@@ -3,8 +3,10 @@
   flex-direction: row;
   justify-content: center;
   align-items: center;
-  position: relative;
+  position: absolute;
+  top: 0;
   height: 135px;
+  width: 100%;
   gap: 4rem;
   background: linear-gradient(45deg, #004d80b2, #001f3f);
 }
@@ -82,4 +84,17 @@
 
 .signout{
   color: rgb(245, 99, 99);
+}
+
+@media screen and (max-width: 600px) {
+  .logo {
+  font-size: 40px;
+}
+.toolbar {
+  height: 125px;
+  gap: 1rem;
+}
+.button-16 {
+  font-size: 13px;
+}
 }

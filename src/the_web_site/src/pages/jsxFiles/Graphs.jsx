@@ -4,8 +4,11 @@ import MqttFunctions from "../../MQTT/MqttFunctions";
 import { Line, Bar } from "react-chartjs-2";
 import "chart.js/auto";
 import { useAuth } from "../../firebase/useAuth";
+import { Chart } from "chart.js";
+import zoomPlugin from "chartjs-plugin-zoom";
 
 function Graphs() {
+  Chart.register(zoomPlugin);
   const { mqttCredentials } = useAuth();
   const { fetchAllDataFromFeed } = MqttFunctions();
   const [currentTab, setCurrentTab] = useState("lightSwitchState");
@@ -44,6 +47,32 @@ function Graphs() {
       },
     ],
   });
+  const lineChartOptions = {
+    responsive: true,
+    maintainAspectRatio: false,
+    plugins: {
+      zoom: {
+        zoom: {
+          wheel: {
+            enabled: true,
+            speed: 0.1,
+          },
+          pinch: {
+            enabled: true,
+          },
+          mode: "xy",
+        },
+        pan: {
+          enabled: true,
+          mode: "xy",
+        },
+        limits: {
+          x: { min: "original", max: "original", minRange: 1 },
+          y: { min: "original", max: "original", minRange: 1 },
+        },
+      },
+    },
+  };
 
   useEffect(() => {
     if (
@@ -94,7 +123,7 @@ function Graphs() {
   }, [mqttCredentials]);
 
   const calculateDailyConsumption = (data) => {
-    const consumption = {}; // Object to hold consumption data
+    const consumption = {};
     let lastState = null;
     let lastTime = null;
 
@@ -127,7 +156,7 @@ function Graphs() {
   };
 
   return (
-    <div className="containergraph">
+    <div  className="containergraph">
       <div className="tabs">
         <button
           className="optionsButton"
@@ -151,35 +180,17 @@ function Graphs() {
       <div className="content">
         {currentTab === "lightSwitchState" && (
           <div className="graphImage">
-            <Line
-              data={graphData}
-              options={{
-                responsive: true,
-                maintainAspectRatio: false,
-              }}
-            />
+            <Line data={graphData} options={lineChartOptions} />
           </div>
         )}
         {currentTab === "electricityConsumption" && (
           <div className="graphImage">
-            <Bar
-              data={consumptionData}
-              options={{
-                responsive: true,
-                maintainAspectRatio: false,
-              }}
-            />
+            <Bar data={consumptionData} options={lineChartOptions} />
           </div>
         )}
         {currentTab === "sensorData" && (
           <div className="graphImage">
-            <Line
-              data={sensorData}
-              options={{
-                responsive: true,
-                maintainAspectRatio: false,
-              }}
-            />
+            <Line data={sensorData} options={lineChartOptions} />
           </div>
         )}
       </div>

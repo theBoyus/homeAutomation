@@ -101,7 +101,8 @@ const LightSwitch = () => {
           </div>
           <div className="sensitivity">
             <label>Sensitivity:</label>
-            <input
+              <input
+                className="sensitivityinput"
               type="range"
               id="sensitivity"
               name="sensitivity"
