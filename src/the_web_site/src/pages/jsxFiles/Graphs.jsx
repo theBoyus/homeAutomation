@@ -151,17 +151,35 @@ function Graphs() {
       <div className="content">
         {currentTab === "lightSwitchState" && (
           <div className="graphImage">
-            <Line data={graphData} />
+            <Line
+              data={graphData}
+              options={{
+                responsive: true,
+                maintainAspectRatio: false,
+              }}
+            />
           </div>
         )}
         {currentTab === "electricityConsumption" && (
           <div className="graphImage">
-            <Bar data={consumptionData} />
+            <Bar
+              data={consumptionData}
+              options={{
+                responsive: true,
+                maintainAspectRatio: false,
+              }}
+            />
           </div>
         )}
         {currentTab === "sensorData" && (
           <div className="graphImage">
-            <Line data={sensorData} />
+            <Line
+              data={sensorData}
+              options={{
+                responsive: true,
+                maintainAspectRatio: false,
+              }}
+            />
           </div>
         )}
       </div>

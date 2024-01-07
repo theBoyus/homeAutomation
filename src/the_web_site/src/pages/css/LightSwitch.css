@@ -3,15 +3,15 @@
     align-items: center;
     justify-content: space-between;
     width: 100%;
-    background-color: rgb(41, 40, 40);
+    background-color: rgba(41, 40, 40, 0);
 }
 .toggleLightCon{
-  top: 15px;
+  top: 30px;
   margin: 0px;
   position: relative;
   display: flex;
   flex-direction: column;
-  height: 150px;
+  height: 180px;
 }
 
 .autoModeMessage{
@@ -19,8 +19,8 @@
   padding: 0px;
   padding-left: 30px;
   width: 150px;
-  color: #fff;
-  font-size: small;
+  color: #ff0000;
+  font-size: 15px;
 }
   
 .toggleLight {

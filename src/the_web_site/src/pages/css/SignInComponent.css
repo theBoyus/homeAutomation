@@ -62,18 +62,3 @@
 .error-message.show {
   visibility: visible;
 }
-
-.sign-out-button {
-  padding: 10px 15px;
-  background-color: #dc3545;
-  color: white;
-  border: none;
-  border-radius: 4px;
-  cursor: pointer;
-  font-size: 16px;
-  transition: background-color 0.3s;
-}
-
-.sign-out-button:hover {
-  background-color: #c82333;
-}

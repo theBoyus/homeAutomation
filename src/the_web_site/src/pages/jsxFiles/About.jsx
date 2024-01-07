@@ -2,42 +2,36 @@ import "../css/About.css";
 
 function About() {
   return (
-    <div className="mainContainer">
-      <h2>About</h2>
-      <div className="aboutUsContiner">
-        <div className="titleBox1">
+    <div className="aboutContainer">
+      <h2 className="header">About</h2>
+      <section className="aboutSection">
+        <div className="titleBox">
           <h3>Who are we</h3>
         </div>
-        <div className="txtContainer1">
+        <div className="txtContainer">
           <p>
-            "We are a group consisting of three engineers attending Linneus
+            We are a group consisting of three engineers attending Linnaeus
             University. We created this website for our group project in the
-            course 'Introduction to Projects,' where we are focusing on home
-            automation using lights to improve energy efficiency. This project
-            will take place from the end of November to early January."
+            course 'Introduction to Projects,' focusing on home automation using
+            lights to improve energy efficiency. This project will take place
+            from the end of November to early January.
           </p>
         </div>
-      </div>
-      <div>
-        <div className="secondContainer">
-          <div className="titleBox2">
-            <h3>Links</h3>
-          </div>
-          <div className="txtContainer1">
-            <p>
-              Link to our:
-              <a href="https://gitlab.lnu.se/ll224hf/homeautomation">
-                Repository
-              </a>
-            </p>
-          </div>
+      </section>
+      <section className="linksSection">
+        <div className="titleBox">
+          <h3>Links</h3>
         </div>
-        <div>
-          <div>
-            <h3></h3>
-          </div>
+        <div className="txtContainer">
+          <p>
+            Link to our:
+            <a href="https://gitlab.lnu.se/ll224hf/homeautomation">
+              {" "}
+              Repository
+            </a>
+          </p>
         </div>
-      </div>
+      </section>
     </div>
   );
 }

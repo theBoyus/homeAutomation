@@ -133,7 +133,6 @@ function Schedule() {
   return (
     <div className="scheduleContainer">
       <div className="inputContainer">
-        <h2 className="time">{new Date().toLocaleTimeString()}</h2>
         <label className="scheduleLabel">
           Schedule Time:
           <input

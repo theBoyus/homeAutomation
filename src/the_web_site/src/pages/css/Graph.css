@@ -1,21 +1,24 @@
-.containergraph{
-display: flex;
-flex-direction: column;
-justify-content: center;
-align-items: center;
+.containergraph {
+  display: block;
+  margin-top: 10px;
+  width: 100%;
 }
 
-.tabs{
-display: flex;
-width: 800px;
-justify-content: space-between;
+.tabs {
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
 }
 
-.content{
-    margin-top: 20px;
-width: 1000px;
+.content {
+  margin-top: 20px;
+  display: block;
+  align-items: center;
+  justify-content: center;
+
 }
 
-.graphImage{
-
+.graphImage {
+  height: 70vh;
+  max-height: 100vh;
 }
