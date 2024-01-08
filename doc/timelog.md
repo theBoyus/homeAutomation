@@ -99,6 +99,6 @@ As usual Samuel worked his magic and got the website updated to look like an app
 
 # 08/01-24
 
-## 13:00 - 14:00
+## 13:00 - 15:00
 
 Powerpoint presentation work, done pretty much. Now just needs rehearsals.
