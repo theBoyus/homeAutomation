@@ -95,7 +95,7 @@ try:
 
         if time.ticks_ms() - wait_time > 10000:  # Wait time check
             lux = tsl.lux
-            print("Lux: {}  ".format(lux))     
+            print("Lux: {}  ".format(lux))
 
             wait_time = time.ticks_ms()
 
