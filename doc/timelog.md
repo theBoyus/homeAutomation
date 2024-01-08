@@ -90,3 +90,15 @@ Updated more documentation and pretty much finished the README.
 ## 17:00
 
 Setup.md structure work.
+
+# ##/01-24
+
+## ##:## - ##:## ???
+
+As usual Samuel worked his magic and got the website updated to look like an app.
+
+# 08/01-24
+
+## 13:00 - 14:00
+
+Powerpoint presentation work, done pretty much. Now just needs rehearsals.
