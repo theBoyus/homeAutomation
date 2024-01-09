@@ -107,11 +107,11 @@ const LightSwitch = () => {
               id="sensitivity"
               name="sensitivity"
               min="0"
-              max="30"
+              max="500"
               value={sensitivity}
               onChange={handleSensitivityChange}
             />
-            <span>{sensitivity}</span>
+              <span>{sensitivity}</span>
           </div>
           <div className="checkboxCon">
             <p>auto mode</p>
