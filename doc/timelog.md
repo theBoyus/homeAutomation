@@ -108,3 +108,9 @@ As usual Samuel worked his magic and got the website updated to look like an app
 ## 13:00 - 15:00
 
 Powerpoint presentation work, done pretty much. Now just needs rehearsals.
+
+# 09/01-24
+
+## 16:00 - ##:00
+
+More presentation work being done, fixed short video to show on presentation in-case of hardware failure. 
