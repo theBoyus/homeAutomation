@@ -91,11 +91,17 @@ Updated more documentation and pretty much finished the README.
 
 Setup.md structure work.
 
-# ##/01-24
+# 05/01-24
 
-## ##:## - ##:## ???
+## 09:00 - 21:00
 
-As usual Samuel worked his magic and got the website updated to look like an app.
+Samuel made graphs on the website work, also made pico interact and work with the data from the website.
+
+# 07/01-24
+
+## 10:00 - 13:30
+
+As usual Samuel worked his magic and got the website updated to look like an app, it's now more responsive.
 
 # 08/01-24
 
